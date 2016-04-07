@@ -247,3 +247,5 @@ android:
   components:
     - tools
 ```
+
+最后，希望大家都能顺顺利利的build passing。
