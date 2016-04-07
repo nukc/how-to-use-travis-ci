@@ -1,7 +1,5 @@
 # 如何简单入门使用Travis-CI持续集成 
 
-官方文档：[https://docs.travis-ci.com/](https://docs.travis-ci.com/)
-
 不知道你们有没有看过[![Build Status](https://travis-ci.org/nukc/Buff.svg?branch=master)](https://travis-ci.org/nukc/Buff)这样一个标识，
 只看文字就可以看出这个项目是否已经构建成功，如果不成功则会显示 Build failing。 如果你的项目还没有使用，那么赶快跟我一起来装13吧。233333
 
@@ -12,19 +10,21 @@ Travis-CI是一个开源的持续构建项目，能够测试和部署；Travis-C
 
 目前Travis-CI分[http://travis-ci.org/](http://travis-ci.org/)（GitHub公开项目进这个）和[http://travis-ci.com/](http://travis-ci.com/)（私有付费项目）
 
+官方文档：[https://docs.travis-ci.com/](https://docs.travis-ci.com/)
+
 ## 开始使用 Travis-CI
 
-1. 用你的GitHub账号登录[Travis-CI](https://travis-ci.org/auth)，确认接受访问GitHub的权限。
+1：用你的GitHub账号登录[Travis-CI](https://travis-ci.org/auth)，确认接受访问GitHub的权限。
 
-2. 登录之后，Travis-CI就会同步你GitHub账号的仓库。然后打开[个人页面](https://travis-ci.org/profile)并给你想要构建的项目启用Travis-CI。
+2：登录之后，Travis-CI就会同步你GitHub账号的仓库。然后打开[个人页面](https://travis-ci.org/profile)并给你想要构建的项目启用Travis-CI。
 
 就像这样：<img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/enable.png">
 
-3. 添加 ```.travis.yml``` 文件到你项目根目录下，Travis-CI会按照.travis.yml里的内容进行构建。
+3：添加 ```.travis.yml``` 文件到你项目根目录下，Travis-CI会按照.travis.yml里的内容进行构建。
 
 如下是一个Android项目配置例子：
 
-```
+```ruby
 language: android
 android:
   components:
@@ -51,9 +51,9 @@ android:
     - sys-img-x86-android-17
 ```
 
-4. 把 ```.travis.yml``` push到你的GitHub上以触发Travis-CI进行构建。
+4：把 ```.travis.yml``` push到你的GitHub上以触发Travis-CI进行构建。
 
-5. 最后你就可以到[构建状态页面](https://travis-ci.org/repositories)来查看你的项目是否构建成功。
+5：最后你就可以到[构建状态页面](https://travis-ci.org/repositories)来查看你的项目是否构建成功。
 
 <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/build-status.png">
 
@@ -63,7 +63,7 @@ android:
 
 先来看看下面这个我使用过的配置：
 
-```
+```ruby
 language: android   # 声明构建语言环境
 
 notifications:      # 每次构建的时候是否通知，如果不想收到通知邮箱（个人感觉邮件贼烦），那就设置false吧
@@ -111,44 +111,44 @@ deploy:              # 部署
 <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/var-setting.png">
 
 考虑到安全问题，我们的签名设置可能是这样的: 
-```
-        release {
-            try {
-                storeFile file("nukc.jks")
-                storePassword KEYSTORE_PASSWORD
-                keyAlias "C"
-                keyPassword KEY_PASSWORD
-            } catch (ex) {
-                throw new Exception("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
-            }
-        }
+```gradle
+release {
+    try {
+        storeFile file("nukc.jks")
+        storePassword KEYSTORE_PASSWORD
+        keyAlias "C"
+        keyPassword KEY_PASSWORD
+    } catch (ex) {
+        throw new Exception("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+    }
+}
 
 ```
 KEYSTORE_PASSWORD和KEY_PASSWORD环境变量放在了gradle.properties文件，可以直接在build.gradle中使用
 如果不知道是否能获取到gradle.properties里的环境变量，那就加个判断吧。（设置了会获取不到？比如.gitignore设置了忽略没有上传,判断一下也好）
 然后最终就变成这样：
 
-```
-        release {
-            try {
-                storeFile file("nukc.jks")
-                storePassword project.hasProperty("KEYSTORE_PASSWORD") ? KEYSTORE_PASSWORD : System.getenv("KEYSTORE_PASSWORD")
-                keyAlias "C"
-                keyPassword project.hasProperty("KEY_PASSWORD") ? KEY_PASSWORD : System.getenv("KEY_PASSWORD")
-            } catch (ex) {
-                throw new Exception("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
-            }
-        }
+```gradle
+release {
+    try {
+        storeFile file("nukc.jks")
+        storePassword project.hasProperty("KEYSTORE_PASSWORD") ? KEYSTORE_PASSWORD : System.getenv("KEYSTORE_PASSWORD")
+        keyAlias "C"
+        keyPassword project.hasProperty("KEY_PASSWORD") ? KEY_PASSWORD : System.getenv("KEY_PASSWORD")
+    } catch (ex) {
+        throw new Exception("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+    }
+}
 
 ```
 
 对于文件加密，Travis CI提供了一个基于ruby的CLI命令行工具，可以直接使用gem安装：
-```
-    gem install travis
+```ruby
+gem install travis
 ```
 安装后进入安卓项目根目录，尝试对证书文件加密：
-```
-    travis encrypt-file nukc.jks --add
+```ruby
+travis encrypt-file nukc.jks --add
 ```
 如果首次运行，travis会提示需要登录，运行travis login --org并输入Github用户名密码即可。（付费版则为travis login --pro）
 
@@ -157,7 +157,7 @@ travis encrypt-file指令会做几件事情:
 2. 基于密钥通过openssl对文件进行加密，上例中会项目根目录生成xx.jks.enc文件
 3. 在.travis.yml中自动生成Travis CI环境下解密文件的配置，上例运行后可以看到.travis.yml中多了几行：
 
-```
+```ruby
 before_install:
     - gem install fir-cli
     - openssl aes-256-cbc -K $encrypted_e6c55137b621_key -iv $encrypted_e6c55137b621_iv
@@ -172,7 +172,7 @@ before_install:
 Travis CI无法获取到，那肯定是会build failing的。
 
 之前：
-```
+```gradle
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
@@ -190,7 +190,7 @@ bintray {
 }
 ```
 然后我把这2个变量添加到了Travis CI控制台，最后改一下。
-```
+```gradle
 Properties properties = new Properties()
 boolean isHasFile = false
 if (project.rootProject.findProject('local.properties') != null){
