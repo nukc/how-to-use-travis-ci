@@ -183,7 +183,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "Buff"    //发布到JCenter上的项目名字
+        name = "Buff"    
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["MIT"]
@@ -205,7 +205,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "Buff"    //发布到JCenter上的项目名字
+        name = "Buff"    
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["MIT"]
