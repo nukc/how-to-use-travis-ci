@@ -105,8 +105,8 @@ deploy:              # 部署
 
 ## 密码和证书安全
 对于密码等敏感信息，Travis CI提供了2种解决方案：
-1. 对密码等敏感信息进行加密，然后再构建环境时解密。
-2. 在Travis CI控制台设置环境变量，然后使用```System.getenv()```获取值。
+* 对密码等敏感信息进行加密，然后再构建环境时解密。
+* 在Travis CI控制台设置环境变量，然后使用```System.getenv()```获取值。
 
 <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/var-setting.png">
 
@@ -152,7 +152,8 @@ travis encrypt-file nukc.jks --add
 ```
 如果首次运行，travis会提示需要登录，运行travis login --org并输入Github用户名密码即可。（付费版则为travis login --pro）
 
-travis encrypt-file指令会做几件事情:
+travis encrypt-file指令会做几件事情：
+
 1. 在Travis CI控制台自动生成一对密钥: encrypted_e6c55137b621_key和encrypted_e6c55137b621_iv
 2. 基于密钥通过openssl对文件进行加密，上例中会项目根目录生成xx.jks.enc文件
 3. 在.travis.yml中自动生成Travis CI环境下解密文件的配置，上例运行后可以看到.travis.yml中多了几行：
