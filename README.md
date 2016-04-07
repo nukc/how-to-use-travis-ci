@@ -233,7 +233,7 @@ before_install:
 <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/failed-to-find.png">
 
 我是加上 ```- tools``` 解决的：
-```
+```ruby
 android:
   components:
     - tools
