@@ -214,6 +214,11 @@ bintray {
 }
 ```
 
+## 如何在自己的项目中显示Status Image
+
+[![Build Status](https://travis-ci.org/nukc/Buff.svg?branch=master)](https://travis-ci.org/nukc/Buff)
+<img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/image.png">
+
 ## 爬过的坑
 
 如果你遇到了其他的问题，可以尝试到[travis-ci/issues](https://github.com/travis-ci/travis-ci/issues)里找找，或者Google / StackOverflow
