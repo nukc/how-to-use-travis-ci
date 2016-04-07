@@ -218,6 +218,8 @@ bintray {
 
 如果你遇到了其他的问题，可以尝试到[travis-ci/issues](https://github.com/travis-ci/travis-ci/issues)里找找，或者Google / StackOverflow
 
+----------------------------------------------------------------
+
 > /home/travis/build.sh: line 45: ./gradlew: Permission denied
 
 <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/permission-denied.png">
@@ -227,6 +229,8 @@ gradlew的权限问题，修改gradlew的权限，在```.travis.yml```里加上�
 before_install:
  - chmod +x gradlew
 ```
+
+---------------------------------------------------------------
 
 > failed to find Build Tools revision 23.0.2
 
