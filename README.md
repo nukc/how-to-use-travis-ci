@@ -167,12 +167,13 @@ before_install:
 
 最后在```.gitignore```中忽略xx.jks以及gradle.properties
 
+### 项目使用了Bintray配置文件
 
 目前我的开源项目用不到证书签名，我还是比较关心Bintray apikey的安全，上传到JCenter还是比较实用的。
 本来我把bintray.apikey和bintray.user设置在了```local.properties```中，但由于```local.properties```不会被上传，
 Travis CI无法获取到，那肯定是会build failing的。
 
-之前：
+之前：（报错，没有local.properties这样的文件）
 ```gradle
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
