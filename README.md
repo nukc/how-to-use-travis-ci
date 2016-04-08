@@ -102,6 +102,9 @@ deploy:              # 部署
 除了上面这些命令外，还有很多，比如：```branches:``` （指定持续集成的分支）, ```install:```（安装软件包）等待，
 如果想进一步了解请到[Customizing Your Build](https://docs.travis-ci.com/user/customizing-the-build/)
 
+自动发布到GitHub Release：
+
+<img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/releases.png">
 
 ## 密码和证书安全
 对于密码等敏感信息，Travis CI提供了2种解决方案：
