@@ -248,4 +248,14 @@ android:
     - tools
 ```
 
+---------------------------------------------------------------
+
+> failed to deploy
+
+<img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/public_repo.png">
+
+设置一下这个token的权限就好了
+
+<img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/token-setting.png">
+
 最后，希望大家都能顺顺利利的build passing。
