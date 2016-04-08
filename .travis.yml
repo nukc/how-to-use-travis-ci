@@ -1,0 +1,29 @@
+language: android
+
+notifications:
+  email: false
+
+sudo: false
+
+android:
+  components:
+    - tools
+    - build-tools-23.0.2
+    - android-23
+    - extra-android-m2repository
+    - extra-android-support
+
+before_install:
+ - chmod +x gradlew
+
+script:
+  - ./gradlew assembleRelease
+
+deploy:
+  provider: releases
+  api_key:
+    secure: 7f4dc45a19f742dce39cbe4d1e5852fb588593fd
+  file: app/build/outputs/apk/app-release.apk
+  skip_cleanup: true
+  on:
+    tags: true
