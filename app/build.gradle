@@ -8,8 +8,8 @@ android {
         applicationId "com.github.nukc.how_to_use_travis_ci"
         minSdkVersion 8
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
     }
 
     signingConfigs {
