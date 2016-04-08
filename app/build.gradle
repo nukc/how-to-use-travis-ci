@@ -16,9 +16,9 @@ android {
         release {
             try {
                 storeFile file("nukc.jks")
-                storePassword KEYSTORE_PASSWORD
+                storePassword project.hasProperty("KEYSTORE_PASSWORD") ? KEYSTORE_PASSWORD : System.getenv("KEYSTORE_PASSWORD")
                 keyAlias "C"
-                keyPassword KEY_PASSWORD
+                keyPassword project.hasProperty("KEY_PASSWORD") ? KEY_PASSWORD : System.getenv("KEY_PASSWORD")
             } catch (ex) {
                 throw new Exception("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
             }
