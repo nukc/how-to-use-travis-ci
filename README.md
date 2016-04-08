@@ -1,6 +1,6 @@
 # 如何简单入门使用Travis-CI持续集成 
 
-不知道你们有没有看过[![Build Status](https://travis-ci.org/nukc/Buff.svg?branch=master)](https://travis-ci.org/nukc/Buff)这样一个标识，
+不知道你们有没有看过[![Build Status](https://travis-ci.org/nukc/how-to-use-travis-ci.svg?branch=master)](https://travis-ci.org/nukc/how-to-use-travis-ci)这样一个标识，
 只看文字就可以看出这个项目是否已经构建成功（让大家知道项目没有问题），如果不成功则会显示 Build failing。 如果你的项目还没有使用，那么赶快跟我一起来装13吧。233333
 
 
@@ -216,7 +216,7 @@ bintray {
 
 ## 如何在自己的项目中显示Status Image
 
-[![Build Status](https://travis-ci.org/nukc/Buff.svg?branch=master)](https://travis-ci.org/nukc/Buff)
+[![Build Status](https://travis-ci.org/nukc/how-to-use-travis-ci.svg?branch=master)](https://travis-ci.org/nukc/how-to-use-travis-ci)
 <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/image.png">
 
 ## 爬过的坑
