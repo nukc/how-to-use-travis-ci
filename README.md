@@ -222,6 +222,14 @@ bintray {
 [![Build Status](https://travis-ci.org/nukc/how-to-use-travis-ci.svg?branch=master)](https://travis-ci.org/nukc/how-to-use-travis-ci)
 <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/image.png">
 
+## 其他技巧
+
+###跳过自动构建
+如果commit不想让travis ci构建，那么就在commit message里加上`[ci skip]`就行了。
+```cmd
+git commit -m "[ci skip] commit message"
+```
+
 ## 爬过的坑
 
 如果你遇到了其他的问题，可以尝试到[travis-ci/issues](https://github.com/travis-ci/travis-ci/issues)里找找，或者Google / StackOverflow
