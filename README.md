@@ -269,4 +269,15 @@ android:
 
 <img src="https://raw.githubusercontent.com/nukc/how-to-use-travis-ci/master/images/token-setting.png">
 
+---------------------------------------------------------------
+
+> A problem occurred evaluating project ':app'.
+> java.lang.UnsupportedClassVersionError: com/android/build/gradle/AppPlugin : Unsupported major.minor version 52.0
+
+在 ```.travis.yml``` 里加上：
+```ruby
+jdk:
+  - oraclejdk8
+```
+
 最后，希望大家都能顺顺利利的build passing。
