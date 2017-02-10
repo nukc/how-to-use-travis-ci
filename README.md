@@ -280,4 +280,13 @@ jdk:
   - oraclejdk8
 ```
 
+----------------------------------------------------------------
+
+> * What went wrong:
+>  A problem occurred evaluating project ':app'.
+>    >Failed to apply plugin [id 'com.android.application']
+>      > Could not create plugin of type 'AppPlugin'.
+
+更新 gradle 版本就可以了
+
 最后，希望大家都能顺顺利利的build passing。
