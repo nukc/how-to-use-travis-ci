@@ -224,7 +224,7 @@ bintray {
 
 ## 其他技巧
 
-###跳过自动构建
+### 跳过自动构建
 如果commit不想让travis ci构建，那么就在commit message里加上`[ci skip]`就行了。
 ```cmd
 git commit -m "[ci skip] commit message"
